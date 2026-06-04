@@ -214,10 +214,18 @@ This project is licensed under the [MIT License](LICENSE).
 
 <br/>
 
+<<<<<<< HEAD
 Built with by **[Vaibhav Bhosle](https://github.com/your-username)**
+=======
+Built with ❤️ by **[Vaibhav Bhosle](https://github.com/your-username)**
+>>>>>>> dd205fd6fcde81e436a74efe44879aa254b2b49d
 
 <br/>
 
 ⭐ **Star this repo if you found it helpful!**
 
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> dd205fd6fcde81e436a74efe44879aa254b2b49d

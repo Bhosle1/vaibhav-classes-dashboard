@@ -5,7 +5,7 @@ export default function Navbar() {
   const location = useLocation();
   const token = localStorage.getItem("auth_token");
 
-  // Don't render the navbar on the login page or if not logged in
+  // Don't render the navbar if not logged in
   if (!token) return null;
 
   const userString = localStorage.getItem("user");
@@ -25,14 +25,8 @@ export default function Navbar() {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header style={{
-      position: "sticky",
-      top: 0,
-      zIndex: 200,
-      padding: "0.75rem 1.5rem",
-    }}>
+    <header style={{ position: "sticky", top: 0, zIndex: 200, padding: "0.75rem 1.5rem" }}>
       <nav style={{
-        // The floating pill navbar — pure liquid glass
         background: "rgba(255, 255, 255, 0.045)",
         backdropFilter: "blur(32px) saturate(180%)",
         WebkitBackdropFilter: "blur(32px) saturate(180%)",
@@ -50,31 +44,20 @@ export default function Navbar() {
         overflow: "hidden",
       }}>
 
-        {/* Top specular line */}
+        {/* Top specular highlight line */}
         <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0,
-          height: "1px",
+          position: "absolute", top: 0, left: 0, right: 0, height: "1px",
           background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.28) 35%, rgba(255,255,255,0.40) 50%, rgba(255,255,255,0.28) 65%, transparent 100%)",
           pointerEvents: "none",
         }} />
 
-        {/* Brand Logo */}
-        <Link to="/dashboard" style={{
-          textDecoration: "none",
-          display: "flex",
-          alignItems: "center",
-          gap: "0.65rem",
-          flexShrink: 0,
-        }}>
+        {/* Brand */}
+        <Link to="/dashboard" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.65rem", flexShrink: 0 }}>
           <div style={{
-            width: "2rem",
-            height: "2rem",
+            width: "2rem", height: "2rem",
             borderRadius: "var(--radius-sm)",
             background: "linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: "flex", alignItems: "center", justifyContent: "center",
             boxShadow: "0 4px 16px rgba(139,92,246,0.40), inset 0 1px 0 rgba(255,255,255,0.2)",
             flexShrink: 0,
           }}>
@@ -83,43 +66,30 @@ export default function Navbar() {
             </svg>
           </div>
           <span style={{
-            fontSize: "1.05rem",
-            fontWeight: 800,
-            fontFamily: "var(--font-heading)",
+            fontSize: "1.05rem", fontWeight: 800, fontFamily: "var(--font-heading)",
             background: "linear-gradient(135deg, #fff 0%, #c4b5fd 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
             letterSpacing: "-0.02em",
           }}>
-            Vaibhav bhosle classes
+            Apex Portal
           </span>
         </Link>
 
         {/* Nav Links */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
-          <NavLink to="/dashboard" label="Dashboard" active={isActive("/dashboard")}>
-            <svg width="14" height
-            ="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect width="7" height="9" x="3" y="3" rx="1" />
-              <rect width="7" height="5" x="14" y="3" rx="1" />
-              <rect width="7" height="9" x="14" y="12" rx="1" />
-              <rect width="7" height="5" x="3" y="16" rx="1" />
+          <NavChip to="/dashboard" label="Dashboard" active={isActive("/dashboard")}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect width="7" height="9" x="3" y="3" rx="1" /><rect width="7" height="5" x="14" y="3" rx="1" />
+              <rect width="7" height="9" x="14" y="12" rx="1" /><rect width="7" height="5" x="3" y="16" rx="1" />
             </svg>
-          </NavLink>
+          </NavChip>
         </div>
 
-        {/* Right side — user info + logout */}
+        {/* Right — user pill + logout */}
         {user && (
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}>
-            {/* User pill */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <div style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.6rem",
+              display: "flex", alignItems: "center", gap: "0.6rem",
               background: "rgba(255,255,255,0.055)",
               border: "1px solid rgba(255,255,255,0.10)",
               borderRadius: "var(--radius-full)",
@@ -130,25 +100,17 @@ export default function Navbar() {
                 src={user.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=7c3aed&color=fff&size=80`}
                 alt={user.name}
                 style={{
-                  width: "1.75rem",
-                  height: "1.75rem",
-                  borderRadius: "var(--radius-full)",
-                  objectFit: "cover",
-                  border: "1.5px solid rgba(255,255,255,0.18)",
-                  flexShrink: 0,
+                  width: "1.75rem", height: "1.75rem",
+                  borderRadius: "var(--radius-full)", objectFit: "cover",
+                  border: "1.5px solid rgba(255,255,255,0.18)", flexShrink: 0,
                 }}
               />
               <div style={{ lineHeight: 1.2 }}>
-                <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "rgba(255,255,255,0.90)" }}>
-                  {user.name}
-                </div>
-                <div style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.38)", fontWeight: 500 }}>
-                  Admin
-                </div>
+                <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "rgba(255,255,255,0.90)" }}>{user.name}</div>
+                <div style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.38)", fontWeight: 500 }}>Admin</div>
               </div>
             </div>
 
-            {/* Logout button */}
             <button
               onClick={handleLogout}
               title="Sign Out"
@@ -156,11 +118,8 @@ export default function Navbar() {
                 background: "rgba(244,63,94,0.08)",
                 border: "1px solid rgba(244,63,94,0.16)",
                 borderRadius: "var(--radius-full)",
-                width: "2.1rem",
-                height: "2.1rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                width: "2.1rem", height: "2.1rem",
+                display: "flex", alignItems: "center", justifyContent: "center",
                 cursor: "pointer",
                 transition: "background 0.15s ease, border-color 0.15s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",
                 flexShrink: 0,
@@ -189,19 +148,16 @@ export default function Navbar() {
   );
 }
 
-// Reusable nav link chip
-function NavLink({ to, label, active, children }) {
+// Small nav link chip component
+function NavChip({ to, label, active, children }) {
   return (
     <Link
       to={to}
       style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "0.35rem",
+        display: "flex", alignItems: "center", gap: "0.35rem",
         padding: "0.4rem 0.85rem",
         borderRadius: "var(--radius-full)",
-        fontSize: "0.85rem",
-        fontWeight: 600,
+        fontSize: "0.85rem", fontWeight: 600,
         textDecoration: "none",
         transition: "background 0.15s ease, color 0.15s ease",
         background: active ? "rgba(139,92,246,0.18)" : "transparent",

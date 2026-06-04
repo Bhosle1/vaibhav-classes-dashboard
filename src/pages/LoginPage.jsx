@@ -152,7 +152,7 @@ export default function LoginPage() {
               <input
                 id="userId" type="text"
                 className={`form-input ${errors.userId ? "input-error" : ""}`}
-                placeholder="e.g. vaibhav"
+                placeholder="Enter admin username"
                 value={userId}
                 onChange={e => { setUserId(e.target.value); if (errors.userId) setErrors(p => ({ ...p, userId: "" })); }}
                 disabled={loading} autoComplete="username"
