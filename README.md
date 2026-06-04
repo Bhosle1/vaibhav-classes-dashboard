@@ -214,7 +214,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <br/>
 
-Built with ❤️ by **[Vaibhav Bhosle](https://github.com/your-username)**
+Built with by **[Vaibhav Bhosle](https://github.com/your-username)**
 
 <br/>
 
